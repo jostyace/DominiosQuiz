@@ -33,6 +33,10 @@ button:hover {
   margin: 0;
 }
 
+.opciones:hover {
+  background-color: var(--morado) !important;
+}
+
 .opciones {
   width: 48%;
   height: 70px;

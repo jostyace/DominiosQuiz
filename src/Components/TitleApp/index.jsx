@@ -1,4 +1,4 @@
-export const Saldo = () => {
+export const TitleApp = () => {
   return (
     <>
         <h1 className='titulo'>Dominios de las Escrituras</h1>

@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
-import { Button } from "../Button"
+import {  useState } from "react";
 import './NuevaEntrada.css'
+import { Button } from "../Button"
+import imgCorrecto from '/correcto.svg'
+import imgIncorrecto from '/incorrecto.svg'
 
 export const ScreenLDM = () => {
   const [dominioActual, setDominioActual] = useState(1)
@@ -8,6 +10,10 @@ export const ScreenLDM = () => {
   const [continuar, setContinuar] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [seleccionada, setSeleccionada] = useState(null);
+  const [correcto, setCorrecto] = useState(null);
+  const [imgResult, setImgResult] = useState(null);
+
+  
   
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -192,10 +198,14 @@ export const ScreenLDM = () => {
       setCorrectas(correctas+1)
       setContinuar(true)
       setOpenModal(true)
+      setCorrecto('Correcto')
+      setImgResult(imgCorrecto)
     } else {
       setSeleccionada(referenciaSeleccionada)
       setContinuar(true)
       setOpenModal(true)    
+      setCorrecto('Incorrecto')
+      setImgResult(imgIncorrecto)
     }
   };
 
@@ -220,9 +230,11 @@ export const ScreenLDM = () => {
       </div>
       
         {continuar && 
-          <div>
-            <p>Tu seleccion fue {seleccionada} y la respuesta correcta es {resultado.referencia}</p>
-            <Button btnTitle='Siguiente' btnColor='#663399' onClick={()=> siguienteVersiculo()} />
+          <div className="modalResult">
+          <img className="imgOk" src={imgResult} alt="" />
+            <h1 className="correct">{correcto}</h1>
+            <p>Tu seleccion fue <strong> {seleccionada}</strong>y la respuesta correcta es <strong>{resultado.referencia}</strong></p>
+            <Button btnTitle='Siguiente' btnColor='#663399' clase='btnOkClass' onClick={()=> siguienteVersiculo()} />
           </div>
         }
     </div>

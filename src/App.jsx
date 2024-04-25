@@ -4,7 +4,7 @@ import { TitleContainer } from './Components/TitleContainer';
 import { ScreenContainer } from './Components/ScreenContainer';
 import { Title } from './Components/Title';
 import { Menu } from './Components/Menu';
-import { Saldo } from './Components/Saldo';
+import { TitleApp } from './Components/TitleApp';
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
   return (
     <>
     <div className="mainScreen">
-        {componentesAlternos ? <TitleContainer screen={<Title cambiarElementos={cambiarElementos} btnTitle={titleScreen} setActualScreen={setActualScreen} />} clase={"men"} /> : <TitleContainer screen={<Saldo />} clase={"ele"}  />}
+        {componentesAlternos ? <TitleContainer screen={<Title cambiarElementos={cambiarElementos} btnTitle={titleScreen} setActualScreen={setActualScreen} />} clase={"men"} /> : <TitleContainer screen={<TitleApp />} clase={"ele"}  />}
         {componentesAlternos ? <ScreenContainer cambiarElementos={cambiarElementos} screen={actualScreen} clase={"contentClass"}/> : <ScreenContainer cambiarElementos={cambiarElementos} screen={<Menu cambiarElementos={cambiarElementos} setActualScreen={setActualScreen} setTitleScreen={setTitleScreen} location={'menu'} />} clase={"menuClass"}/>}
     </div>
     </>

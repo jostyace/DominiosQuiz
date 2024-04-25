@@ -34,7 +34,7 @@
 .men {
   height: 15%;
   transition: height 0.3s ease;
-
+  min-height: 100px;
   display: flex;
   flex-direction: row;
   background-color: #ffb100;
@@ -87,4 +87,8 @@
 .saldoLabel {
   position: relative;
   top: 20px;
+}
+
+.imgCorrect {
+  height: 30px;
 }
