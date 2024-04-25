@@ -1,0 +1,21 @@
+.mainMenu {
+  display: flex;
+  flex-direction: column;
+  height: 55%;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 21px;
+  top: -34px !important;
+  position: relative;
+  background: white;
+  width: 90%;
+  margin: auto;
+  box-shadow: rgb(32 32 35 / 20%) 0px 7px 29px 0px;
+  height: 100% !important;
+}
+
+.selector {
+  width: 100%;
+  height: 50vh !important;
+  padding: 20px;
+}

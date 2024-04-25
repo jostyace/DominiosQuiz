@@ -1,0 +1,54 @@
+.nuevaEntrada {
+  gap: 20px;
+}
+.descripcionNueva {
+  width: 80%;
+  height: 200px;
+  border-radius: 10px;
+  padding: 20px;
+  background: #ffe1b3;
+  outline: none !important;
+  border: none;
+  color: #9b6d00;
+  font-weight: 700 !important;
+  font-family: Nunito, sans-serif;
+  resize: none;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #dfaa65;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #dfaa65;
+}
+
+.nuevaInput {
+  border-radius: 52px;
+  width: 85%;
+  color: #ffffff;
+  padding: 1px;
+  text-align: center;
+  border: 2px solid #ff9900;
+  height: 40px;
+  color: gray !important;
+  outline: none !important;
+}
+.optionsClass {
+  width: 80%;
+}

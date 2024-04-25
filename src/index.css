@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #d8d8d8;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#root {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:root {
+  --celeste: rgb(20 178 253);
+  --verde: rgb(38 215 52);
+  --rojo: rgb(233 61 61);
+  --amarillo: rgb(253 176 2);
+  --morado: rgb(157 0 255);
+  --morado-claro: rgb(229 188 255);
+  --rosado: rgb(232 22 235);
+}
+
+#logo {
+  width: 50px;
+  height: 50px;
+  fill: white;
+}
+
+.mainScreen {
+  height: 100vh;
+  background-color: rgb(255, 255, 255) !important;
+  border-radius: 20px;
+  width: 100vw;
+  max-width: 768px;
+}

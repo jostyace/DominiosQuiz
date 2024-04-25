@@ -1,0 +1,90 @@
+.Screentitle {
+  font-size: 19px;
+  font-family: Nunito, sans-serif !important;
+  font-weight: 600;
+  color: #ffffff;
+  width: 85%;
+  text-align: center;
+  position: relative;
+  left: -24px;
+  top: 21px;
+}
+.backBtn {
+  width: 40px;
+  height: 40px;
+  background: #e39f05;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.backIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.cantidad {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 43px;
+}
+
+.men {
+  height: 15%;
+  transition: height 0.3s ease;
+
+  display: flex;
+  flex-direction: row;
+  background-color: #ffb100;
+  color: white;
+  padding-top: 5px;
+}
+
+.ele {
+  height: 45%;
+  transition: height 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background-color: rgb(101, 2, 231);
+  color: white;
+  background-image: url(/bg.png);
+  overlay: revert;
+  background-blend-mode: color-dodge;
+  background-size: auto;
+}
+
+.titulo {
+  font-size: 26px;
+  font-family: Nunito, sans-serif !important;
+  font-weight: 900;
+  color: white;
+  width: 65%;
+  line-height: 26px;
+  text-align: center;
+}
+.menuHeader {
+}
+
+.saldo {
+  border-radius: 52px;
+  width: 50%;
+  color: #ffffff;
+  padding: 1px;
+  text-align: center;
+  border: 2px solid #280043 !important;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.saldoLabel {
+  position: relative;
+  top: 20px;
+}
