@@ -1,7 +1,7 @@
 import { ScreenDyC } from "../ScreenDyC"
 import { Button } from "../Button"
-import { ScreenAT } from "../ScreenNT"
-import { ScreenNT } from "../ScreenAT"
+import { ScreenNT } from "../ScreenNT"
+import { ScreenAT } from "../ScreenAT"
 import './MainMenu.css'
 import { ScreenLDM } from "../ScreenLDM"
 
