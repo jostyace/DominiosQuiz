@@ -115,7 +115,7 @@ export const ScreenNT = () => {
       "texto": "Todo lo puedo en Cristo que me fortalece."
     },
     {
-      "id": 29,
+      "id": 19,
       "reference": "2 Tesalonicenses 2:1–3",
       "texto": "Pero os rogamos, hermanos, en cuanto a la venida de nuestro Señor Jesucristo, y a nuestro recogimiento con él, que no cambiéis fácilmente vuestro modo de pensar, ni os conturbéis, ni por espíritu, ni por palabra ni por carta como si fuera nuestra, en el sentido de que el día del Señor está cerca. No os engañe nadie de ninguna manera, porque no vendrá sin que antes venga la apostasía, y se manifieste el hombre de pecado, el hijo de perdición,"
     },
