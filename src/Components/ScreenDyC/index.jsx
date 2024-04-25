@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from "../Button"
-import './ScreenAT.css'
 import imgCorrecto from '/correcto.webp'
 import imgIncorrecto from '/incorrecto.webp'
 
