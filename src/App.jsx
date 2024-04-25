@@ -18,7 +18,7 @@ function App() {
     <>
     <div className="mainScreen">
         {componentesAlternos ? <TitleContainer screen={<Title cambiarElementos={cambiarElementos} btnTitle={titleScreen} setActualScreen={setActualScreen} />} clase={"men"} /> : <TitleContainer screen={<TitleApp />} clase={"ele"}  />}
-        {componentesAlternos ? <ScreenContainer cambiarElementos={cambiarElementos} screen={actualScreen} clase={"contentClass"}/> : <ScreenContainer cambiarElementos={cambiarElementos} screen={<Menu cambiarElementos={cambiarElementos} setActualScreen={setActualScreen} setTitleScreen={setTitleScreen} location={'menu'} />} clase={"menuClass"}/>}
+        {componentesAlternos ? <ScreenContainer cambiarElementos={cambiarElementos} screen={actualScreen} clase={"contentClass"}/> : <ScreenContainer cambiarElementos={cambiarElementos} screen={<Menu cambiarElementos={cambiarElementos} setActualScreen={setActualScreen} setComponentesAlternos={setComponentesAlternos} setTitleScreen={setTitleScreen} location={'menu'} />} clase={"menuClass"}/>}
     </div>
     </>
   )

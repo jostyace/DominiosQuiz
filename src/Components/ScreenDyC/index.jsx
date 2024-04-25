@@ -3,7 +3,7 @@ import { Button } from "../Button"
 import imgCorrecto from '/correcto.webp'
 import imgIncorrecto from '/incorrecto.webp'
 
-export const ScreenDyC = () => {
+export const ScreenDyC = ({setComponentesAlternos}) => {
   const [dominioActual, setDominioActual] = useState(1)
   const [correctas, setCorrectas] = useState(0);
   const [continuar, setContinuar] = useState(false);
@@ -11,6 +11,7 @@ export const ScreenDyC = () => {
   const [seleccionada, setSeleccionada] = useState(null);
   const [correcto, setCorrecto] = useState(null);
   const [imgResult, setImgResult] = useState(null);
+  const [mensaje, setMensaje] = useState(null);
 
 
 
@@ -216,17 +217,29 @@ export const ScreenDyC = () => {
   const resultado = obtenerReferenciasAleatorias(dominioActual);
 
   const verificarSeleccion = (referenciaSeleccionada) => {
+    if(dominioActual >= ldm.length){
+      if(correctas >= 20){
+        setImgResult(imgCorrecto)
+          setMensaje("Excelente")
+      } else if(correctas < 20 && correctas>= 10) {
+        setImgResult(imgCorrecto)
+        setMensaje("Bien")
+      }else if(correctas <10){
+        setImgResult(imgIncorrecto)
+        setMensaje("Ups! hay que practicar")
+      }
+      setDominioActual(24)
+      setOpenModal(true)
+    }
     if (referenciaSeleccionada === resultado.referencia) {
       setSeleccionada(referenciaSeleccionada)
       setCorrectas(correctas + 1)
       setContinuar(true)
-      setOpenModal(true)
       setCorrecto('Correcto')
       setImgResult(imgCorrecto)
     } else {
       setSeleccionada(referenciaSeleccionada)
       setContinuar(true)
-      setOpenModal(true)
       setCorrecto('Incorrecto')
       setImgResult(imgIncorrecto)
     }
@@ -239,6 +252,10 @@ export const ScreenDyC = () => {
     setOpenModal(false)
 
   }
+  const cx = () => {
+    setComponentesAlternos(false)
+
+  }
 
   const botonesReferencias = resultado.referenciasAleatorias.map(referencia => (
     <Button onClick={() => verificarSeleccion(referencia)} key={referencia} clase='opciones' btnTitle={referencia} btnColor={'#445566'} />
@@ -249,7 +266,7 @@ export const ScreenDyC = () => {
       <label>Correctas: {correctas} de 25</label>
       <textarea className="escritura" placeholder="" value={resultado.texto} readOnly />
       <div className="optionsClass">
-        {!openModal && botonesReferencias}
+        {!continuar && botonesReferencias}
       </div>
 
       {continuar &&
@@ -258,6 +275,14 @@ export const ScreenDyC = () => {
           <h1 className="correct">{correcto}</h1>
           <p>Tu seleccion fue <strong> {seleccionada}</strong>y la respuesta correcta es <strong>{resultado.referencia}</strong></p>
           <Button btnTitle='Siguiente' btnColor='#663399' clase='btnOkClass' onClick={() => siguienteVersiculo()} />
+        </div>
+      }
+      {openModal &&
+        <div className="modalResult">
+          <img className="imgOk" src={imgResult} alt="" />
+          <h1 className="correct">{mensaje}</h1>
+          <p>Respondiste el <strong> {(correctas / 25)*100} %</strong>, de forma correcta, es decir <strong>{correctas}</strong> de los 25 Dominios</p>
+          <Button btnTitle='Regresar' btnColor='#663399' clase='btnOkClass' onClick={cx} />
         </div>
       }
     </div>

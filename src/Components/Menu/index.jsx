@@ -5,7 +5,7 @@ import { ScreenAT } from "../ScreenAT"
 import './MainMenu.css'
 import { ScreenLDM } from "../ScreenLDM"
 
-export const Menu = ({cambiarElementos,setActualScreen, location, setTitleScreen }) => {
+export const Menu = ({cambiarElementos,setActualScreen, location, setTitleScreen, setComponentesAlternos }) => {
   return (
       <div className="selector"> 
         <Button
@@ -16,7 +16,7 @@ export const Menu = ({cambiarElementos,setActualScreen, location, setTitleScreen
           cambiarElementos={cambiarElementos}
           location = {location}
           setTitleScreen = {setTitleScreen}
-          destinoScreen={<ScreenLDM cambiarElementos={cambiarElementos} setActualScreen={setActualScreen} />}
+          destinoScreen={<ScreenLDM cambiarElementos={cambiarElementos} setComponentesAlternos={setComponentesAlternos} setActualScreen={setActualScreen} />}
         />
         <Button
           btnTitle='Antiguo Testamento'
@@ -26,7 +26,7 @@ export const Menu = ({cambiarElementos,setActualScreen, location, setTitleScreen
           cambiarElementos={cambiarElementos}
           location = {location}
           setTitleScreen = {setTitleScreen}
-          destinoScreen={<ScreenAT cambiarElementos={cambiarElementos} setActualScreen={setActualScreen} />}
+          destinoScreen={<ScreenAT cambiarElementos={cambiarElementos} setComponentesAlternos={setComponentesAlternos}  setActualScreen={setActualScreen} />}
         />
         <Button
           btnTitle='Nuevo Testamemto'
@@ -36,7 +36,7 @@ export const Menu = ({cambiarElementos,setActualScreen, location, setTitleScreen
           cambiarElementos={cambiarElementos}
           location = {location}
           setTitleScreen = {setTitleScreen}
-          destinoScreen={<ScreenNT cambiarElementos={cambiarElementos} setActualScreen={setActualScreen} />}
+          destinoScreen={<ScreenNT cambiarElementos={cambiarElementos}  setComponentesAlternos={setComponentesAlternos} setActualScreen={setActualScreen} />}
         />
         <Button
           btnTitle='Doctrina y Convenios'
@@ -46,7 +46,7 @@ export const Menu = ({cambiarElementos,setActualScreen, location, setTitleScreen
           cambiarElementos={cambiarElementos}
           location = {location}
           setTitleScreen = {setTitleScreen}
-          destinoScreen={<ScreenDyC cambiarElementos={cambiarElementos} setTitleScreen={setTitleScreen} setActualScreen={setActualScreen} />}
+          destinoScreen={<ScreenDyC cambiarElementos={cambiarElementos} setComponentesAlternos={setComponentesAlternos} setActualScreen={setActualScreen} />}
         />
       </div>
   )

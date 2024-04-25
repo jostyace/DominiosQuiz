@@ -4,7 +4,7 @@ import './ScreenNT.css'
 import imgCorrecto from '/correcto.webp'
 import imgIncorrecto from '/incorrecto.webp'
 
-export const ScreenNT = () => {
+export const ScreenNT = ({setComponentesAlternos}) => {
   const [dominioActual, setDominioActual] = useState(1)
   const [correctas, setCorrectas] = useState(0);
   const [continuar, setContinuar] = useState(false);
@@ -12,6 +12,7 @@ export const ScreenNT = () => {
   const [seleccionada, setSeleccionada] = useState(null);
   const [correcto, setCorrecto] = useState(null);
   const [imgResult, setImgResult] = useState(null);
+  const [mensaje, setMensaje] = useState(null);
 
   
   
@@ -152,28 +153,29 @@ export const ScreenNT = () => {
   ]
 
 
+
   function obtenerReferenciasAleatorias(id) {
     const versiculo = ldm.find(v => v.id === id);
     if (!versiculo) {
-        return {};
+      return {};
     }
 
     const referenciasExcluidas = ldm.filter(v => v.id !== id).map(v => v.reference);
 
     if (referenciasExcluidas.length < 3) {
-        return {};
+      return {};
     }
-    
+
     const referenciasAleatorias = [];
     while (referenciasAleatorias.length < 3) {
-        const indiceAleatorio = Math.floor(Math.random() * referenciasExcluidas.length);
-        const referenciaAleatoria = referenciasExcluidas.splice(indiceAleatorio, 1)[0];
-        referenciasAleatorias.push(referenciaAleatoria);
+      const indiceAleatorio = Math.floor(Math.random() * referenciasExcluidas.length);
+      const referenciaAleatoria = referenciasExcluidas.splice(indiceAleatorio, 1)[0];
+      referenciasAleatorias.push(referenciaAleatoria);
     }
 
     if (referenciasAleatorias.includes(versiculo.reference)) {
-        const indiceReemplazo = Math.floor(Math.random() * referenciasExcluidas.length);
-        referenciasAleatorias[referenciasAleatorias.indexOf(versiculo.reference)] = referenciasExcluidas[indiceReemplazo];
+      const indiceReemplazo = Math.floor(Math.random() * referenciasExcluidas.length);
+      referenciasAleatorias[referenciasAleatorias.indexOf(versiculo.reference)] = referenciasExcluidas[indiceReemplazo];
     }
 
     referenciasAleatorias.push(versiculo.reference);
@@ -181,40 +183,56 @@ export const ScreenNT = () => {
     const referenciasMezcladas = shuffleArray(referenciasAleatorias);
 
     const respuesta = {
-        id: versiculo.id,
-        texto: versiculo.texto,
-        referencia: versiculo.reference,
-        referenciasAleatorias: referenciasMezcladas,
+      id: versiculo.id,
+      texto: versiculo.texto,
+      referencia: versiculo.reference,
+      referenciasAleatorias: referenciasMezcladas,
     };
     return respuesta;
   }
-  
+
 
   const resultado = obtenerReferenciasAleatorias(dominioActual);
 
- const verificarSeleccion = (referenciaSeleccionada) => {
+  const verificarSeleccion = (referenciaSeleccionada) => {
+    if(dominioActual >= ldm.length){
+      if(correctas >= 20){
+        setImgResult(imgCorrecto)
+          setMensaje("Excelente")
+      } else if(correctas < 20 && correctas>= 10) {
+        setImgResult(imgCorrecto)
+        setMensaje("Bien")
+      }else if(correctas <10){
+        setImgResult(imgIncorrecto)
+        setMensaje("Ups! hay que practicar")
+      }
+      setDominioActual(24)
+      setOpenModal(true)
+    }
     if (referenciaSeleccionada === resultado.referencia) {
       setSeleccionada(referenciaSeleccionada)
-      setCorrectas(correctas+1)
+      setCorrectas(correctas + 1)
       setContinuar(true)
-      setOpenModal(true)
       setCorrecto('Correcto')
       setImgResult(imgCorrecto)
     } else {
       setSeleccionada(referenciaSeleccionada)
       setContinuar(true)
-      setOpenModal(true)    
       setCorrecto('Incorrecto')
       setImgResult(imgIncorrecto)
     }
   };
 
-  
-  const siguienteVersiculo = ()=>{
-    setDominioActual(dominioActual+1)
+
+  const siguienteVersiculo = () => {
+    setDominioActual(dominioActual + 1)
     setContinuar(false)
     setOpenModal(false)
-    
+
+  }
+  const cx = () => {
+    setComponentesAlternos(false)
+
   }
 
   const botonesReferencias = resultado.referenciasAleatorias.map(referencia => (
@@ -224,19 +242,27 @@ export const ScreenNT = () => {
   return (
     <div className="nuevaEntrada">
       <label>Correctas: {correctas} de 25</label>
-      <textarea className="escritura" placeholder="" value={resultado.texto} readOnly/>
+      <textarea className="escritura" placeholder="" value={resultado.texto} readOnly />
       <div className="optionsClass">
-      {!openModal && botonesReferencias}
+        {!continuar && botonesReferencias}
       </div>
-      
-        {continuar && 
-          <div className="modalResult">
+
+      {continuar &&
+        <div className="modalResult">
           <img className="imgOk" src={imgResult} alt="" />
-            <h1 className="correct">{correcto}</h1>
-            <p>Tu seleccion fue <strong> {seleccionada}</strong>y la respuesta correcta es <strong>{resultado.referencia}</strong></p>
-            <Button btnTitle='Siguiente' btnColor='#663399' clase='btnOkClass' onClick={()=> siguienteVersiculo()} />
-          </div>
-        }
+          <h1 className="correct">{correcto}</h1>
+          <p>Tu seleccion fue <strong> {seleccionada}</strong>y la respuesta correcta es <strong>{resultado.referencia}</strong></p>
+          <Button btnTitle='Siguiente' btnColor='#663399' clase='btnOkClass' onClick={() => siguienteVersiculo()} />
+        </div>
+      }
+      {openModal &&
+        <div className="modalResult">
+          <img className="imgOk" src={imgResult} alt="" />
+          <h1 className="correct">{mensaje}</h1>
+          <p>Respondiste el <strong> {(correctas / 25)*100} %</strong>, de forma correcta, es decir <strong>{correctas}</strong> de los 25 Dominios</p>
+          <Button btnTitle='Regresar' btnColor='#663399' clase='btnOkClass' onClick={cx} />
+        </div>
+      }
     </div>
   );
 }
