@@ -193,7 +193,9 @@ export const ScreenLDM = () => {
       setContinuar(true)
       setOpenModal(true)
     } else {
-      console.log('Incorrecto');
+      setSeleccionada(referenciaSeleccionada)
+      setContinuar(true)
+      setOpenModal(true)    
     }
   };
 
@@ -219,8 +221,8 @@ export const ScreenLDM = () => {
       
         {continuar && 
           <div>
-            <Button btnTitle='Siguiente' btnColor='#663399' onClick={()=> siguienteVersiculo()} />
             <p>Tu seleccion fue {seleccionada} y la respuesta correcta es {resultado.referencia}</p>
+            <Button btnTitle='Siguiente' btnColor='#663399' onClick={()=> siguienteVersiculo()} />
           </div>
         }
     </div>
