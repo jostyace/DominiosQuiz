@@ -1,8 +1,8 @@
 import {  useState } from "react";
 import { Button } from "../Button"
 import './ScreenNT.css'
-import imgCorrecto from '/correcto.svg'
-import imgIncorrecto from '/incorrecto.svg'
+import imgCorrecto from '/correcto.webp'
+import imgIncorrecto from '/incorrecto.webp'
 
 export const ScreenNT = () => {
   const [dominioActual, setDominioActual] = useState(1)

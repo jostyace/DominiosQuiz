@@ -1,8 +1,8 @@
 import {  useState } from "react";
 import './NuevaEntrada.css'
 import { Button } from "../Button"
-import imgCorrecto from '/correcto.svg'
-import imgIncorrecto from '/incorrecto.svg'
+import imgCorrecto from '/correcto.webp'
+import imgIncorrecto from '/incorrecto.webp'
 
 export const ScreenLDM = () => {
   const [dominioActual, setDominioActual] = useState(1)
